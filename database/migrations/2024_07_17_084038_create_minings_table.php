@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mining', function (Blueprint $table) {
+        Schema::create('minings', function (Blueprint $table) {
             $table->integer("id")->autoIncrement()->unique();
             $table->integer('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mining');
+        Schema::dropIfExists('minings');
     }
 };
