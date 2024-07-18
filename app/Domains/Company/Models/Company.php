@@ -3,6 +3,7 @@
 namespace App\Domains\Company\Models;
 
 use App\Domains\Company\Models\DTOs\AddCompanyDTO;
+use App\Domains\Country\Models\Country;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,6 +14,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Company extends Model
 {
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
     public function fillFromDTO(AddCompanyDTO $addCompanyDTO): void
     {
         $this->name = $addCompanyDTO->getName();

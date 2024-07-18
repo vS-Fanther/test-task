@@ -9,7 +9,7 @@ class CompanyDbRepository
 {
     public function getAllCompanies(): Collection
     {
-        return Company::all();
+        return Company::with('country')->get();
     }
 
     public function save(Company $company): Company
