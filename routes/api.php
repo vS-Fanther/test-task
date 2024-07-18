@@ -13,6 +13,8 @@ use App\Domains\Mining\Application\Api\Controllers\AddMiningController;
 use App\Domains\Mining\Application\Api\Controllers\DeleteMiningController;
 use App\Domains\Mining\Application\Api\Controllers\EditMiningController;
 use App\Domains\Mining\Application\Api\Controllers\GetMiningsController;
+use App\Domains\Mining\Application\Api\Controllers\GetMiningsForMonthController;
+use App\Http\Controllers\DataGenerator;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/countries')->group(function () {
@@ -34,4 +36,7 @@ Route::prefix('/minings')->group(function () {
     Route::post('/add', [AddMiningController::class, 'addMining']);
     Route::put('/{id}', [EditMiningController::class, 'editMining']);
     Route::delete('/', [DeleteMiningController::class, 'deleteMining']);
+    Route::get('/month', [GetMiningsForMonthController::class, 'getMiningsForMonth']);
 });
+
+Route::post('/generate', [DataGenerator::class, 'process']);
